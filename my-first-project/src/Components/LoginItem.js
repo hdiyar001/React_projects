@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import "./Login.css";
-
-import LoginItem from "./LoginItem";
+import "./LoginItem.css";
 
 const Login = () => {
   const loginInfo = [
@@ -13,7 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const userNameHandler = (id, ChangeHandler) => {
-    if (id == "username") {
+    if (id === "username") {
       setUsername(ChangeHandler.target.value);
     } else {
       setPassword(ChangeHandler.target.value);
@@ -27,7 +25,7 @@ const Login = () => {
     console.log(password);
   };
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className="form-container">
       <p>username</p>
       <input
         type="text"
@@ -39,7 +37,10 @@ const Login = () => {
         onChange={(event) => userNameHandler("password", event)}
       ></input>
       <br />
-      <button type="submit">Submit</button>
+      <br />
+      <button className="login-btn" type="submit">
+        Login
+      </button>
     </form>
   );
 };

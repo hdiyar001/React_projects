@@ -2,11 +2,15 @@
 import "./Login.css";
 import LoginItem from "./LoginItem";
 
-const Login = () => {
+const Login = (props) => {
+  console.log("value");
+  const saveDataHandler = (value) => {
+    props.OnDataHandler(value);
+  };
   return (
     <div>
       <h2>Login</h2>
-      <LoginItem />
+      <LoginItem OnSubmitHandler={saveDataHandler} />
     </div>
   );
 };

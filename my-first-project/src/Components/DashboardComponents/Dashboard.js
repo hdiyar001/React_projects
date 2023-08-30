@@ -2,10 +2,10 @@ import "./Dashboard.css";
 import TaskItem from "./TaskItem";
 import TopBar from "./topBar";
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   return (
     <div>
-      <TopBar className="top-bar" />
+      <TopBar userName={props.userName} className="top-bar" />
       <TaskItem />
     </div>
   );

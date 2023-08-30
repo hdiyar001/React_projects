@@ -2,19 +2,14 @@
 import "./Login.css";
 import LoginItem from "./LoginItem";
 
-
-
-const Login = () => {
-
-
-  const SaveSubmitInput = (value) => {
-    console.log(value);
-  }
-
+const Login = (props) => {
+  const saveDataHandler = (value) => {
+    props.OnDataHandler(value);
+  };
   return (
     <div>
       <h2>Login</h2>
-      <LoginItem OnSubmitHandler={SaveSubmitInput} />
+      <LoginItem OnSubmitHandler={saveDataHandler} />
     </div>
   );
 };

@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "./LoginItem.css";
 
-const Login = (props) => {
-
-
+const LoginItem = (props) => {
   const loginInfo = [
     ["Diyar", "1234"],
     ["Jano", "4325"],
@@ -25,28 +23,22 @@ const Login = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
 
-
     const userData = {
-      Username : '',
-      Password : ''
+      Username: "",
+      Password: "",
     };
-   
-    loginInfo.forEach(element => {
-      if(element.includes(username) && element.includes(password)) {
+
+    loginInfo.forEach((element) => {
+      if (element.includes(username) && element.includes(password)) {
         check = true;
         userData.Username = element[0];
         userData.Password = element[1];
       }
-      
-      
     });
 
-    if(check == true ){
-      console.log(userData);
-      props.OnSubmitHandler(userData);
+    if (check === true) {
+      props.OnSubmitHandler(userData.Username);
     }
-
-
   };
   return (
     <form onSubmit={submitHandler} className="form-container">
@@ -68,4 +60,4 @@ const Login = (props) => {
     </form>
   );
 };
-export default Login;
+export default LoginItem;

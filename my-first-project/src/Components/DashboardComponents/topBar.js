@@ -1,10 +1,12 @@
 import "./topBar.css";
 
-const topBar = () => {
-  return <div>
-        <p>Name:</p>
-        <button>Logout</button>
-    </div>;
+const topBar = (props) => {
+  return (
+    <div>
+      <p>Hello : {props.userName}</p>
+      <button>Logout</button>
+    </div>
+  );
 };
 
-export default topBar; 
+export default topBar;

@@ -1,19 +1,28 @@
+import React, { useState } from "react";
 import Dashboard from "./Components/DashboardComponents/Dashboard";
 import Login from "./Components/LoginComponents/Login";
 
-let username = "";
 function App() {
+  const [userName, setUserName] = useState("");
+  const [show, setShow] = useState(false);
+
   const saveDataHandler = (value) => {
-    console.log("app");
-    username = value;
-    console.log(username);
-    console.log(value);
+    setUserName(value);
+    setShow(true);
   };
   return (
-    <div>
-      <Login OnDataHandler={saveDataHandler} />
-      {/* <Dashboard userName={username} /> */}
-    </div>
+    <>
+      {!show && (
+        <div>
+          <Login OnDataHandler={saveDataHandler} />
+        </div>
+      )}
+      {show && (
+        <div>
+          <Dashboard userName={userName} />
+        </div>
+      )}
+    </>
   );
 }
 

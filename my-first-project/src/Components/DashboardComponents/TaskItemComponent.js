@@ -7,9 +7,13 @@ const TaskItemComponent = (props) => {
   };
   const submitData = (event) => {
     event.preventDefault();
-    taskData.taskAdded = true;
-    props.onTaskData(taskData);
-    taskData.taskAdded = false;
+    if(!(taskData.taskName === '' ||taskData.priority === '')  ){
+      taskData.taskAdded = true;
+      props.onTaskData(taskData);
+      taskData.taskAdded = false;
+    }
+
+
   };
   return (
     <form onSubmit={submitData}>

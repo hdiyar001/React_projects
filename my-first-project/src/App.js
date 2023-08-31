@@ -10,6 +10,10 @@ function App() {
     setUserName(value);
     setShow(true);
   };
+  const logoutHandler = (value) => {
+    console.log("App" + " " + value);
+    setShow(value);
+  };
   return (
     <>
       {!show && (
@@ -19,7 +23,7 @@ function App() {
       )}
       {show && (
         <div>
-          <Dashboard userName={userName} />
+          <Dashboard onLogoutApp={logoutHandler} userName={userName} />
         </div>
       )}
     </>

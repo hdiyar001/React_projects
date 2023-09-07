@@ -12,12 +12,16 @@ const CalculatorForm = (props) => {
     switch (id) {
       case "currentSavings":
         objData.currentSavings = evt.target.value;
+        break;
       case "yearlySavings":
         objData.yearlySavings = evt.target.value;
+        break;
       case "expectedInterest":
         objData.expectedInterest = evt.target.value;
+        break;
       default:
         objData.investmentDuration = evt.target.value;
+        break;
     }
   };
   const onSubmitHandler = (event) => {

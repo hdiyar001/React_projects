@@ -10,9 +10,10 @@ const UserInput = (props) => {
     }
   };
   const OnSubmitHandler = (event) => {
+    event.preventDefault();
     const userInfoObj = {
-      userNameVar: { userName },
-      userAgeVar: { userAge },
+      userNameVar:  userName ,
+      userAgeVar:  userAge ,
     };
     
     props.userInfo(userInfoObj);

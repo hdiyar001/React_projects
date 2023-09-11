@@ -4,28 +4,32 @@ import ExceptionHandlingWindow from "./Components/ExceptionHandlingWindow";
 import UserInput from "./Components/UserInput";
 
 function CheckValidation(data) {
-  return data && data.userNameVar >= 1;
+  
+  return data && data.userNameVar.length >= 1;
+  
 }
+
+
 
 function App() {
   const [tryAddUser, setTryAddUser] = useState(true); // Initialize as false
-  const [redirectUserInputs, setRedirectUserInputs] = useState({});
+  let userName = "";
+  let userAge = "";
+
 
   const redirectData = (value) => {
     console.log(value);
-    if (CheckValidation(value)) {
-      setTryAddUser(true);
+
+      setTryAddUser(CheckValidation(value));
       setRedirectUserInputs(value);
-    } else {
-      setTryAddUser(false);
-    }
+   
   };
 
   return (
     <div>
       <UserInput userInfo={redirectData} />
-      {tryAddUser && <UserOutput />}
-      {!tryAddUser && <ExceptionHandlingWindow />}
+      {tryAddUser && <UserOutput OutputData = {redirectUserInputs}  />}
+      {!tryAddUser && <ExceptionHandlingWindow errorexp = {()=>{setTryAddUser(true)}} />}
     </div>
   );
 }

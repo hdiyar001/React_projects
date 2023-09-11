@@ -1,4 +1,6 @@
+import { Button, TextField } from "@mui/material";
 import { useState } from "react";
+import userStyle from "./UserInput.css";
 const UserInput = (props) => {
   const [userName, setUserName] = useState("");
   const [userAge, setUserAge] = useState("");
@@ -12,30 +14,36 @@ const UserInput = (props) => {
   const OnSubmitHandler = (event) => {
     event.preventDefault();
     const userInfoObj = {
-      userNameVar:  userName ,
-      userAgeVar:  userAge ,
+      userNameVar: userName,
+      userAgeVar: userAge,
     };
-    
+
     props.userInfo(userInfoObj);
   };
 
   return (
     <form onSubmit={OnSubmitHandler}>
-      <p>Username</p>
-      <input
-        type="text"
+      <TextField
+        id="standard-basic"
+        label="Username"
+        variant="standard"
         value={userName}
         onChange={(evt) => inputsHandler("userName", evt)}
       />
-      <p>Age(YEARS)</p>
-      <input
-        type="text"
+      <br />
+      <TextField
+        id="standard-basic"
+        label="Age"
+        variant="standard"
         value={userAge}
         onChange={(evt) => inputsHandler("userAge", evt)}
       />
       <br />
-      <br />
-      <button type="submit">ADD USER</button>
+      <Button type="submit" variant="contained">
+        Add User
+      </Button>
+
+      {/* <button>ADD USER</button> */}
     </form>
   );
 };

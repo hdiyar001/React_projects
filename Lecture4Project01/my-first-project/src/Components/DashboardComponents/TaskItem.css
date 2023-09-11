@@ -1,0 +1,13 @@
+.task-content {
+  display: flex;
+  align-items: center;
+}
+
+#Task-name__input {
+  width: 150px;
+  height: 10px;
+}
+#Task-prio__input {
+  width: 150px;
+  height: 20px;
+}

@@ -1,0 +1,14 @@
+.form-container {
+  text-align: center;
+}
+p {
+  color: chocolate;
+  font-size: 20 px;
+}
+.login-btn {
+  color: white;
+  background-color: chocolate;
+  font-size: 20 px;
+  width: 175px;
+  border-radius: 5px 5px 5px 5px;
+}

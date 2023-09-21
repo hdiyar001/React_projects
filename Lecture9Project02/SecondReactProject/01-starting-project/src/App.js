@@ -1,60 +1,54 @@
 import React, { useState } from "react";
 import UserOutput from "./Components/UserOutput";
-import ExceptionHandlingWindow from "./Components/ExceptionHandlingWindow";
 import UserInput from "./Components/UserInput";
-import { Alert } from "@mui/material";
+import ChildModal from "./Components/ChildModal";
 
 function CheckValidation(data) {
   let age = data.userAgeVar;
-  return data && data.userNameVar.length >= 1 && age > 0;
+  return data && data.userNameVar.trim().length >= 1 && age > 0;
 }
 
 function App() {
-  const [tryAddUser, setTryAddUser] = useState(true);
-  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  const [tryAddUserExcp, setTryAddUserExcp] = useState();
   let [userInfo, setUserInfo] = useState([]);
 
   const redirectData = (value) => {
     if (CheckValidation(value)) {
-      setTryAddUser(true);
+      setTryAddUserExcp(false);
       setUserInfo((prevData) => [...prevData, value]);
-      setShowSuccessAlert(true);
 
-      // Hide the success alert after 3 seconds
-      setTimeout(() => {
-        setShowSuccessAlert(false);
-      }, 3000);
+      // // Hide the success alert after 3 seconds
+      // setTimeout(() => {}, 3000);
     } else {
-      setTryAddUser(false);
+      setTryAddUserExcp(true);
     }
   };
 
   return (
     <div>
       <UserInput userInfo={redirectData} />
-
-      {showSuccessAlert && (
+      {/* {showSuccessAlert && (
         <Alert variant="outlined" severity="success">
           New User Successfully added
         </Alert>
-      )}
-
-      {tryAddUser &&
-        userInfo.map((value, id) => (
-          <UserOutput
-            key={id}
-            userName={value.userNameVar}
-            userAge={value.userAgeVar}
-          />
-        ))}
-
-      {!tryAddUser && (
-        <ExceptionHandlingWindow
-          errorexp={() => {
-            setTryAddUser(true);
-          }}
+      )} */}
+      {userInfo.map((value, id) => (
+        <UserOutput
+          key={id}
+          userName={value.userNameVar}
+          userAge={value.userAgeVar}
         />
+      ))}
+      {tryAddUserExcp && (
+        <ChildModal
+          openState={tryAddUserExcp}
+          closeOpenState={(value) => setTryAddUserExcp(value)}
+        ></ChildModal>
       )}
+      {/* <ExceptionHandlingWindow
+        errorexp={() => {
+          setTryAddUser(true);
+       /> }} */}
     </div>
   );
 }
